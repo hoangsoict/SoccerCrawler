@@ -1,0 +1,35 @@
+
+import com.soccercrawler.entities.Soccermatch
+import java.math.BigDecimal
+import java.lang.Short
+
+countingSpreadOdds(Short flag, String mode, BigDecimal currentSpreadTeam1, BigDecimal currentOddsTeam1, BigDecimal openSpreadTeam1, BigDecimal openOddsTeam1, BigDecimal currentSpreadTeam2, BigDecimal currentOddsTeam2, BigDecimal openSpreadTeam2, BigDecimal openOddsTeam2)
+{
+	select count(id.mode)
+	from Soccermatch
+	where id.mode = :mode
+	and spreadBetResult = :flag
+	and (:currentSpreadTeam1 =  null or currentSpreadTeam1 = :currentSpreadTeam1)
+	and (:currentSpreadTeam2 =  null or currentSpreadTeam2 = :currentSpreadTeam2)
+	and (:currentOddsTeam1 =  null or currentOddsTeam1 = :currentOddsTeam1)
+	and (:currentOddsTeam2 =  null or currentOddsTeam2 = :currentOddsTeam2)
+	and (:openSpreadTeam1 =  null or openSpreadTeam1 = :openSpreadTeam1)
+	and (:openSpreadTeam2 =  null or openSpreadTeam2 = :openSpreadTeam2)
+	and (:openOddsTeam1 =  null or openOddsTeam1 = :openOddsTeam1)
+	and (:openOddsTeam2 =  null or openOddsTeam2 = :openOddsTeam2)
+}
+
+
+countingOverUnders(Short flag, String mode, BigDecimal currentTotalLine, BigDecimal openTotalLine, BigDecimal currentOuOddsTeam1, BigDecimal openOuOddsTeam1, BigDecimal currentOuOddsTeam2, BigDecimal openOuOddsTeam2)
+{
+	select count(id.mode)
+	from Soccermatch
+	where id.mode = :mode
+	and ouBetResult = :flag
+	and (:currentTotalLine =  null or currentTotalLine = :currentTotalLine)
+	and (:openTotalLine =  null or openTotalLine = :openTotalLine)
+	and (:currentOuOddsTeam1 =  null or currentOuOddsTeam1 = :currentOuOddsTeam1)
+	and (:openOuOddsTeam1 =  null or openOuOddsTeam1 = :openOuOddsTeam1)
+	and (:currentOuOddsTeam2 =  null or currentOuOddsTeam2 = :currentOuOddsTeam2)
+	and (:openOuOddsTeam2 =  null or openOuOddsTeam2 = :openOuOddsTeam2)
+}

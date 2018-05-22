@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<?xdevuiml version="1.0"?>
+<?template BROWSER_XGA?>
+<?import ??>
+<?import com.xdev.ui.XdevButton?>
+<?import com.xdev.ui.XdevGridLayout?>
+<?import com.xdev.ui.XdevLabel?>
+<?import com.xdev.ui.XdevTabSheet?>
+<?import com.xdev.ui.XdevTextField?>
+<?import com.xdev.ui.XdevView?>
+<?import com.xdev.ui.entitycomponent.combobox.XdevComboBox?>
+<XdevView xmlns:x="http://xml.xdev-software.com/xdevuiml" x:name="MainView">
+    <x:constraints zpos="0" width="100%" height="100%" />
+    <XdevTabSheet styleName="framed" x:name="tabSheet" x:selectedTabIndex="1">
+        <x:constraints zpos="0" width="100%" height="100%" />
+        <x:event>selectedTabChange.selectedTabChange</x:event>
+        <XdevGridLayout caption="Spread Bet" x:name="gridLayout">
+            <x:constraints width="100%" height="100%" />
+            <XdevLabel x:name="label" value="Mode">
+                <x:constraints gridx="2" gridy="1" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevComboBox x:name="spreadBetMode" itemCaptionValue="">
+                <x:constraints gridx="3" gridy="1" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+                <x:typeArguments>
+                    <typeArgument type="?" />
+                </x:typeArguments>
+            </XdevComboBox>
+            <XdevLabel x:name="label2" value="Current">
+                <x:constraints gridx="2" gridy="2" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label7" value="Open">
+                <x:constraints gridx="4" gridy="2" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label3" value="Spread">
+                <x:constraints gridx="2" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label4" value="Odds">
+                <x:constraints gridx="3" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label5" value="Spread">
+                <x:constraints gridx="4" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label6" value="Odds">
+                <x:constraints gridx="5" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label10" value="Team 1">
+                <x:constraints gridx="1" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevTextField columns="5" x:name="currentSpreadTeam1">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="2" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="currentOddsTeam1">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="3" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="openSpreadTeam1">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="4" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="openOddsTeam1">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="5" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevLabel x:name="label11" value="Team 2">
+                <x:constraints gridx="1" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevTextField columns="5" x:name="currentSpreadTeam2">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="2" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="currentOddsTeam2">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="3" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="openSpreadTeam2">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="4" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="openOddsTeam2">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="5" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevButton caption="Search" x:name="button">
+                <x:constraints gridx="2" gridy="6" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+                <x:event>click.buttonClick</x:event>
+            </XdevButton>
+            <XdevLabel x:name="label8" value="Result">
+                <x:constraints gridx="1" gridy="7" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="resultLabel">
+                <x:constraints gridx="2" gridy="7" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+        </XdevGridLayout>
+        <XdevGridLayout caption="Over Under Bet" x:name="gridLayout3">
+            <x:constraints top="20px" left="298px" width="100%" height="100%" />
+            <XdevLabel x:name="label9" value="Mode">
+                <x:constraints gridx="2" gridy="1" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevComboBox x:name="overUnderMode" itemCaptionValue="">
+                <x:constraints gridx="3" gridy="1" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+                <x:typeArguments>
+                    <typeArgument type="?" />
+                </x:typeArguments>
+            </XdevComboBox>
+            <XdevLabel x:name="label12" value="Total Line">
+                <x:constraints gridx="2" gridy="2" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label15" value="Over/Under">
+                <x:constraints gridx="5" gridy="2" top="98px" left="521px" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label13" value="Current">
+                <x:constraints gridx="2" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label14" value="Open">
+                <x:constraints gridx="3" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label18" value="Current">
+                <x:constraints gridx="5" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="label19" value="Open">
+                <x:constraints gridx="6" gridy="3" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevTextField columns="5" x:name="currentTotalLine">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="2" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="openTotalLine">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="3" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevLabel x:name="label16" value="Team 1">
+                <x:constraints gridx="4" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevTextField columns="5" x:name="currentOuOddsTeam1">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="5" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="openOuOddsTeam1">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="6" gridy="4" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevLabel x:name="label17" value="Team 2">
+                <x:constraints gridx="4" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevTextField columns="5" x:name="currentOuOddsTeam2">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="5" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevTextField columns="5" x:name="openOuOddsTeam2">
+                <converter numberType="Double" numberFormatType="number" currency="default" converterType="STRING_TO_NUMBER" locale="en-GB" />
+                <x:constraints gridx="6" gridy="5" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevTextField>
+            <XdevButton caption="Search" x:name="button2">
+                <x:constraints gridx="2" gridy="6" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+                <x:event>click.buttonClick</x:event>
+            </XdevButton>
+            <XdevLabel x:name="label21" value="Result">
+                <x:constraints gridx="1" gridy="7" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+            <XdevLabel x:name="resultOuLabel">
+                <x:constraints gridx="2" gridy="7" weighty="0.0" weightx="0.0" width="0px" height="0px" />
+            </XdevLabel>
+        </XdevGridLayout>
+    </XdevTabSheet>
+</XdevView>
+
