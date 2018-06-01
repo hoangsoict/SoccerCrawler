@@ -16,7 +16,7 @@ public interface Constant {
 
 	public static Boolean DISPLAY_MATCH_CRALER_INFO = false;
 
-	public static Boolean DISPLAY_MATCH_SUMMARY_INFO = false;
+	public static Boolean DISPLAY_MATCH_SUMMARY_INFO = true;
 	
 	public static Boolean DISPLAY_MATCH_RESULT_INFO = true;
 

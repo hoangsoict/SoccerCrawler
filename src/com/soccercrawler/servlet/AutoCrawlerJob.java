@@ -156,15 +156,17 @@ public class AutoCrawlerJob implements Job {
 	}
 
 	public void persit(final List<Soccermatch> matchs) {
+		int i = 0;
 		final EntityManager em = emFactory.createEntityManager();
 		em.getTransaction().begin();
 		for (final Soccermatch match : matchs) {
 			if (em.find(Soccermatch.class, match.getId()) == null) {
 				em.persist(match);
 				Utility.displayResultMatch(match);
+				i ++;
 			}
 		}
-
+		System.out.println("------ PERSIT : " + i );
 		em.getTransaction().commit();
 		// em.flush();
 		em.close();
