@@ -10,7 +10,7 @@
         <sql-type jdbc-type="TINYINT" not-null="true" hibernate-type="short" />
         <sql-type jdbc-type="TINYINT" hibernate-type="java.lang.Short" />
     </type-mapping>
-    <table-filter match-catalog="soccerdb" match-name="soccermatch" />
-    <table catalog="soccerdb" name="soccermatch" class="com.soccercrawler.entities.Soccermatch" />
+    <table-filter match-catalog="soccerdb" match-name="soccermatch_temp" />
+    <table catalog="soccerdb" name="soccermatch_temp" class="com.soccercrawler.entities.SoccermatchTemp" />
 </hibernate-reverse-engineering>
 

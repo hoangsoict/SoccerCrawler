@@ -86,6 +86,7 @@ public class Asianodds implements WebsiteCraw {
 						Utility.displayMatch(match);
 						matchs.add(match);
 					} catch (final ParseException e) {
+						System.out.println(e.getMessage());
 						// TODO: handle exception
 					}
 				}

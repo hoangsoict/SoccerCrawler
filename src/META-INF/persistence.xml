@@ -9,6 +9,8 @@
 		</provider>
 		<class>com.soccercrawler.entities.Soccermatch</class>
 		<class>com.soccercrawler.entities.SoccermatchId</class>
+		<class>com.soccercrawler.entities.SoccermatchTempId</class>
+		<class>com.soccercrawler.entities.SoccermatchTemp</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="none" />

@@ -33,3 +33,9 @@ countingOverUnders(Short flag, String mode, BigDecimal currentTotalLine, BigDeci
 	and (:currentOuOddsTeam2 =  null or currentOuOddsTeam2 = :currentOuOddsTeam2)
 	and (:openOuOddsTeam2 =  null or openOuOddsTeam2 = :openOuOddsTeam2)
 }
+
+countTest()
+{
+	select count(id.mode)
+	from Soccermatch
+}

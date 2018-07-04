@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Locale;
 
 import com.soccercrawler.dal.SoccermatchDAO;
+import com.soccercrawler.entities.SoccermatchTemp;
+import com.soccercrawler.entities.SoccermatchTemp_;
 import com.soccercrawler.util.Constant;
 import com.soccercrawler.util.Utility;
 import com.vaadin.ui.Button;
@@ -17,6 +19,8 @@ import com.xdev.ui.XdevTabSheet;
 import com.xdev.ui.XdevTextField;
 import com.xdev.ui.XdevView;
 import com.xdev.ui.entitycomponent.combobox.XdevComboBox;
+import com.xdev.ui.entitycomponent.table.XdevTable;
+import com.xdev.ui.filter.XdevContainerFilterComponent;
 import com.xdev.util.ConverterBuilder;
 
 public class MainView extends XdevView {
@@ -27,6 +31,7 @@ public class MainView extends XdevView {
 	public MainView() {
 		super();
 		this.initUI();
+		this.tabSheet.setSelectedTab(this.gridLayout);
 		this.spreadBetMode.addItem("1Bet Mode");
 		this.spreadBetMode.addItem("188Bet Mode");
 		this.spreadBetMode.setValue("1Bet Mode");
@@ -160,6 +165,9 @@ public class MainView extends XdevView {
 		this.button2 = new XdevButton();
 		this.label21 = new XdevLabel();
 		this.resultOuLabel = new XdevLabel();
+		this.gridLayout2 = new XdevGridLayout();
+		this.containerFilterComponent = new XdevContainerFilterComponent();
+		this.table = new XdevTable<>();
 	
 		this.tabSheet.setStyleName("framed");
 		this.label.setValue("Mode");
@@ -221,6 +229,39 @@ public class MainView extends XdevView {
 		this.openOuOddsTeam2.setConverter(ConverterBuilder.stringToDouble().locale(Locale.forLanguageTag("en-GB")).build());
 		this.button2.setCaption("Search");
 		this.label21.setValue("Result");
+		this.table.setColumnReorderingAllowed(true);
+		this.table.setColumnCollapsingAllowed(true);
+		this.table.setContainerDataSource(SoccermatchTemp.class);
+		this.table.setVisibleColumns(SoccermatchTemp_.mode.getName(), SoccermatchTemp_.nameTeam1.getName(),
+				SoccermatchTemp_.nameTeam2.getName(), SoccermatchTemp_.spreadBetWinPercent.getName(),
+				SoccermatchTemp_.ouBetWinPercent.getName(), SoccermatchTemp_.spreadBetTotalCount.getName(),
+				SoccermatchTemp_.ouBetTotalCount.getName(), SoccermatchTemp_.createdDate.getName(),
+				SoccermatchTemp_.currentSpreadTeam1.getName(), SoccermatchTemp_.currentOddsTeam1.getName(),
+				SoccermatchTemp_.openSpreadTeam1.getName(), SoccermatchTemp_.openOddsTeam1.getName(),
+				SoccermatchTemp_.currentSpreadTeam2.getName(), SoccermatchTemp_.currentOddsTeam2.getName(),
+				SoccermatchTemp_.openSpreadTeam2.getName(), SoccermatchTemp_.openOddsTeam2.getName(),
+				SoccermatchTemp_.currentTotalLine.getName(), SoccermatchTemp_.openTotalLine.getName(),
+				SoccermatchTemp_.currentOuOddsTeam1.getName(), SoccermatchTemp_.openOuOddsTeam1.getName(),
+				SoccermatchTemp_.currentOuOddsTeam2.getName(), SoccermatchTemp_.openOuOddsTeam2.getName());
+		this.table.setColumnCollapsed("currentSpreadTeam1", true);
+		this.table.setColumnCollapsed("currentOddsTeam1", true);
+		this.table.setColumnCollapsed("openSpreadTeam1", true);
+		this.table.setColumnCollapsed("openOddsTeam1", true);
+		this.table.setColumnCollapsed("currentSpreadTeam2", true);
+		this.table.setColumnCollapsed("currentOddsTeam2", true);
+		this.table.setColumnCollapsed("openSpreadTeam2", true);
+		this.table.setColumnCollapsed("openOddsTeam2", true);
+		this.table.setColumnCollapsed("currentTotalLine", true);
+		this.table.setColumnCollapsed("openTotalLine", true);
+		this.table.setColumnCollapsed("currentOuOddsTeam1", true);
+		this.table.setColumnCollapsed("openOuOddsTeam1", true);
+		this.table.setColumnCollapsed("currentOuOddsTeam2", true);
+		this.table.setColumnCollapsed("openOuOddsTeam2", true);
+	
+		this.containerFilterComponent.setContainer(this.table.getBeanContainerDataSource(), "mode", "nameTeam1",
+				"nameTeam2", "spreadBetWinPercent", "ouBetWinPercent", "spreadBetTotalCount", "ouBetTotalCount",
+				"createdDate");
+		this.containerFilterComponent.setSearchableProperties("mode", "nameTeam1", "nameTeam2");
 	
 		this.gridLayout.setColumns(6);
 		this.gridLayout.setRows(8);
@@ -322,11 +363,22 @@ public class MainView extends XdevView {
 		gridLayout3_vSpacer.setSizeFull();
 		this.gridLayout3.addComponent(gridLayout3_vSpacer, 0, 7, 5, 7);
 		this.gridLayout3.setRowExpandRatio(7, 1.0F);
+		this.gridLayout2.setColumns(1);
+		this.gridLayout2.setRows(2);
+		this.containerFilterComponent.setWidth(100, Unit.PERCENTAGE);
+		this.containerFilterComponent.setHeight(-1, Unit.PIXELS);
+		this.gridLayout2.addComponent(this.containerFilterComponent, 0, 0);
+		this.table.setSizeFull();
+		this.gridLayout2.addComponent(this.table, 0, 1);
+		this.gridLayout2.setColumnExpandRatio(0, 100.0F);
+		this.gridLayout2.setRowExpandRatio(1, 100.0F);
 		this.gridLayout.setSizeFull();
 		this.tabSheet.addTab(this.gridLayout, "Spread Bet", null);
 		this.gridLayout3.setSizeFull();
 		this.tabSheet.addTab(this.gridLayout3, "Over Under Bet", null);
-		this.tabSheet.setSelectedTab(this.gridLayout3);
+		this.gridLayout2.setSizeFull();
+		this.tabSheet.addTab(this.gridLayout2, "Result", null);
+		this.tabSheet.setSelectedTab(this.gridLayout2);
 		this.tabSheet.setSizeFull();
 		this.setContent(this.tabSheet);
 		this.setSizeFull();
@@ -342,10 +394,12 @@ public class MainView extends XdevView {
 	private XdevButton button, button2;
 	private XdevComboBox<?> spreadBetMode, overUnderMode;
 	private XdevTabSheet tabSheet;
-	private XdevGridLayout gridLayout, gridLayout3;
+	private XdevGridLayout gridLayout, gridLayout3, gridLayout2;
 	private XdevTextField currentSpreadTeam1, currentOddsTeam1, openSpreadTeam1, openOddsTeam1, currentSpreadTeam2,
 			currentOddsTeam2, openSpreadTeam2, openOddsTeam2, currentTotalLine, openTotalLine, currentOuOddsTeam1,
 			openOuOddsTeam1, currentOuOddsTeam2, openOuOddsTeam2;
+	private XdevTable<SoccermatchTemp> table;
+	private XdevContainerFilterComponent containerFilterComponent;
 	// </generated-code>
 
 }

@@ -4,6 +4,7 @@
 <?xdevuiml version="1.0"?>
 <?template BROWSER_XGA?>
 <?import ??>
+<?import com.soccercrawler.entities.SoccermatchTemp?>
 <?import com.xdev.ui.XdevButton?>
 <?import com.xdev.ui.XdevGridLayout?>
 <?import com.xdev.ui.XdevLabel?>
@@ -11,9 +12,15 @@
 <?import com.xdev.ui.XdevTextField?>
 <?import com.xdev.ui.XdevView?>
 <?import com.xdev.ui.entitycomponent.combobox.XdevComboBox?>
+<?import com.xdev.ui.entitycomponent.table.XdevTable?>
+<?import com.xdev.ui.filter.XdevContainerFilterComponent?>
+<?import java.lang.Short?>
+<?import java.lang.String?>
+<?import java.math.BigDecimal?>
+<?import java.util.Date?>
 <XdevView xmlns:x="http://xml.xdev-software.com/xdevuiml" x:name="MainView">
     <x:constraints zpos="0" width="100%" height="100%" />
-    <XdevTabSheet styleName="framed" x:name="tabSheet" x:selectedTabIndex="1">
+    <XdevTabSheet styleName="framed" x:name="tabSheet" x:selectedTabIndex="2">
         <x:constraints zpos="0" width="100%" height="100%" />
         <x:event>selectedTabChange.selectedTabChange</x:event>
         <XdevGridLayout caption="Spread Bet" x:name="gridLayout">
@@ -163,6 +170,42 @@
             <XdevLabel x:name="resultOuLabel">
                 <x:constraints gridx="2" gridy="7" weighty="0.0" weightx="0.0" width="0px" height="0px" />
             </XdevLabel>
+        </XdevGridLayout>
+        <XdevGridLayout caption="Result" x:name="gridLayout2">
+            <x:constraints width="100%" height="100%" />
+            <XdevContainerFilterComponent x:searchableProperties="mode,nameTeam1,nameTeam2" x:name="containerFilterComponent" x:filterableProperties="mode,nameTeam1,nameTeam2,spreadBetWinPercent,ouBetWinPercent,spreadBetTotalCount,ouBetTotalCount,createdDate" x:container="table">
+                <x:constraints gridx="1" gridy="1" weighty="0.0" weightx="1.0" width="100%" height="0%" />
+            </XdevContainerFilterComponent>
+            <XdevTable columnReorderingAllowed="true" x:name="table" columnCollapsingAllowed="true" x:entity="SoccermatchTemp">
+                <x:entityProperties>
+                    <entry type="String" property="mode" />
+                    <entry type="String" property="nameTeam1" />
+                    <entry type="String" property="nameTeam2" />
+                    <entry type="Short" property="spreadBetWinPercent" />
+                    <entry type="Short" property="ouBetWinPercent" />
+                    <entry type="BigDecimal" property="spreadBetTotalCount" />
+                    <entry type="BigDecimal" property="ouBetTotalCount" />
+                    <entry type="Date" property="createdDate" />
+                    <entry type="BigDecimal" property="currentSpreadTeam1" collapsed="true" />
+                    <entry type="BigDecimal" property="currentOddsTeam1" collapsed="true" />
+                    <entry type="BigDecimal" property="openSpreadTeam1" collapsed="true" />
+                    <entry type="BigDecimal" property="openOddsTeam1" collapsed="true" />
+                    <entry type="BigDecimal" property="currentSpreadTeam2" collapsed="true" />
+                    <entry type="BigDecimal" property="currentOddsTeam2" collapsed="true" />
+                    <entry type="BigDecimal" property="openSpreadTeam2" collapsed="true" />
+                    <entry type="BigDecimal" property="openOddsTeam2" collapsed="true" />
+                    <entry type="BigDecimal" property="currentTotalLine" collapsed="true" />
+                    <entry type="BigDecimal" property="openTotalLine" collapsed="true" />
+                    <entry type="BigDecimal" property="currentOuOddsTeam1" collapsed="true" />
+                    <entry type="BigDecimal" property="openOuOddsTeam1" collapsed="true" />
+                    <entry type="BigDecimal" property="currentOuOddsTeam2" collapsed="true" />
+                    <entry type="BigDecimal" property="openOuOddsTeam2" collapsed="true" />
+                </x:entityProperties>
+                <x:constraints gridx="1" gridy="2" weighty="1.0" weightx="1.0" width="100%" height="100%" />
+                <x:typeArguments>
+                    <typeArgument type="SoccermatchTemp" />
+                </x:typeArguments>
+            </XdevTable>
         </XdevGridLayout>
     </XdevTabSheet>
 </XdevView>
