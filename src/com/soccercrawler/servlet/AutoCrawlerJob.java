@@ -31,7 +31,7 @@ public class AutoCrawlerJob implements Job {
 
 	@Override
 	public void execute(final JobExecutionContext context) throws JobExecutionException {
-		System.err.println("----------- START JOB CRAWLER --- "
+		System.out.println("----------- START JOB CRAWLER --- "
 				+ new SimpleDateFormat(Constant.ASIANODD_DATE_FORMAT).format(new Date()));
 		final Asianodds asianodds1BET = new Asianodds(Constant.ASIANODDS_URL, Constant.ASIANODD_MODE_1BET);
 		final List<Soccermatch> a1Matchs = asianodds1BET.getData();
@@ -56,7 +56,7 @@ public class AutoCrawlerJob implements Job {
 		final List<SoccermatchTemp> tempList = convertObject(totalTemp);
 		persitTemp(tempList);
 
-		System.err.println("----------- END JOB CRAWLER --- "
+		System.out.println("----------- END JOB CRAWLER --- "
 				+ new SimpleDateFormat(Constant.ASIANODD_DATE_FORMAT).format(new Date()));
 	}
 	
